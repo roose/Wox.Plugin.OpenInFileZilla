@@ -29,14 +29,19 @@ class openinfz(Wox):
 
     def query(self,key):
         results = []
+        extras  = []
 
         servers = self.getServers()
 
         for server in servers:
+            # server.lower()
             SubTitle = 'Open ' + server + ' in FileZilla'
-            if server.find(key) == 0:
+            if server.lower().find(key) == 0:
                 results.append({"Title": server, "SubTitle": SubTitle, "IcoPath":"Images\\filezilla.png","JsonRPCAction":{"method": "openFilezilla","parameters":[server],"dontHideAfterAction":False}})
+            elif server.lower().find(key) > 0:
+                extras.append({"Title": server, "SubTitle": SubTitle, "IcoPath":"Images\\filezilla.png","JsonRPCAction":{"method": "openFilezilla","parameters":[server],"dontHideAfterAction":False}})
 
+        results.extend(extras)
         return results
 
     def openFilezilla(self,server):

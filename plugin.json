@@ -1,0 +1,12 @@
+{
+    "ID":"D324E1FDA1F643CE991E5D83E3367C7A",
+    "ActionKeyword":"fz",
+    "Name":"Open in Filezilla",
+    "Description":"Open an existing site in Filezilla",
+    "Author":"roose",
+    "Version":"1.0",
+    "Language":"python",
+    "Website":"https://github.com/roose/Wox.Plugin.OpenInFileZilla",
+    "IcoPath":"Images\\filezilla.png",
+    "ExecuteFileName":"main.py"
+}

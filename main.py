@@ -5,6 +5,7 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 from wox import Wox,WoxAPI
+import subprocess
 
 #It's a bad idea to watch this code, seriously
 
@@ -45,7 +46,7 @@ class openinfz(Wox):
         return results
 
     def openFilezilla(self,server):
-        os.popen('"'+self.exe_path+'"' + ' --site=0' + server)
+        subprocess.call([self.exe_path, "-c", "0"+server])
 
 if __name__ == "__main__":
     openinfz()

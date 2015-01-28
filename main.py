@@ -22,9 +22,18 @@ class openinfz(Wox):
 
         tree = ET.parse(self.xml_path)
         root = tree.getroot()
+        # dictionary with child-parent relationship
+        parentFromChild = {c:p for p in tree.iter() for c in p}
 
-        for child in root[0].findall('Server'):
-            servers.append(child.find('Name').text)
+        for child in root[0].findall('.//Server'):
+            name = child.find('Name').text.strip()
+            # Get full name of Site
+            parent = parentFromChild[child]
+            while parent is not root[0]:
+                # Add folder name to Site name
+                name = "{0}/{1}".format(parent.text.strip(), name)
+                parent = parentFromChild[parent]            
+            servers.append(name)
 
         return servers
 
